@@ -40,7 +40,7 @@ resource "libvirt_network" "network1" {
   mode   = "nat"           # Rede NAT (ou "bridge" se precisar de comunicação externa direta)
   domain = "minha_rede.local"
 
-  addresses = ["192.168.100.0/24"]
+  addresses = ["seuip.0/24"]
 }
 
 # Baixe uma imagem base do Ubuntu
@@ -59,7 +59,7 @@ resource "libvirt_domain" "vm1" {
 
   network_interface {
     network_name = libvirt_network.network1.name
-    addresses    = ["192.168.100.10"]
+    addresses    = ["seuip.10"]
   }
 
   disk {
@@ -136,7 +136,7 @@ Após a criação, você pode conectar-se à VM usando SSH:
 ```
 bash
 
-ssh terraform@192.168.100.10 
+ssh terraform@seuip.10 
 ```
 
 # Explicação dos Componentes
